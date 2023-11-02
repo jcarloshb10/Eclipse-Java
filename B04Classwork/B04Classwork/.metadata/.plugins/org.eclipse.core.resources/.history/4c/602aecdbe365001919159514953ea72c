@@ -1,0 +1,63 @@
+package simulacrum;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Sm01 extends JFrame {
+	//--------------------------
+	private JPanel		pn_center ; 
+	private JComboBox	cb_days ;
+	private JButton		bt_mont[] ; 
+	//-------------------------
+	
+	public Sm01() {
+		setTitle("Simulacrum");
+		setSize(400 , 400) ; 
+		setupWidgets();
+		setupEvents() ; 
+		setVisible(true);
+	}
+	
+	//---------------------------------------
+	private void setupEvents() {
+		pn_center 	= new JPanel(new GridLayout(4,3));
+		bt_mont	= new JButton[12]; 
+		cb_days		= new JComboBox(); 
+		
+		add(pn_center , BorderLayout.CENTER);
+		add(cb_days , BorderLayout.SOUTH); 
+		
+		bt_mont[0].setText("January");
+		bt_mont[1].setText("February");
+		bt_mont[2].setText("March");
+		bt_mont[3].setText("April");
+		bt_mont[4].setText("May");
+		bt_mont[5].setText("June");
+		bt_mont[6].setText("July");
+		bt_mont[7].setText("August");
+		bt_mont[8].setText("September");
+		bt_mont[9].setText("October");
+		bt_mont[10].setText("November");
+		bt_mont[11].setText("December");
+		
+		for(int i=0 ; i<12 ; i++) {
+			pn_center.add(bt_mont[i]);
+		}
+		
+		
+	}
+	
+	//----------------------------------------
+	private void setupWidgets() {
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	public static void main (String []args) {
+		new Sm01() ; 
+	}
+}

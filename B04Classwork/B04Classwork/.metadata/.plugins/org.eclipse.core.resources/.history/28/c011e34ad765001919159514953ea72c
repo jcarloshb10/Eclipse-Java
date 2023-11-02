@@ -1,0 +1,62 @@
+package cw07_stock;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class StockWindow extends JFrame {
+	
+	private JTextField					tf_article ; 		
+	private JList 						ls_healthles , ls_damages ; 
+	private DefaultListModel<String> 	lm_healthles , lm_damages ; 
+
+	public StockWindow() {
+		setTitle("Stock Management") ; 
+		setSize(400 , 400);
+		setupWidgets ();
+		setupEvents ();
+		setVisible(true);
+	}
+	
+	private void setupWidgets() {
+		tf_article 		= new JTextField();
+		lm_damages		= new DefaultListModel<String>();
+		lm_healthles	= new DefaultListModel<String>();
+		ls_damages 		= new JList(lm_damages); 
+		ls_healthles 	= new JList(lm_healthles);
+		
+		JPanel pn_center = new JPanel(new GridLayout(1,2)); // (FILA , COLUMNA)
+		
+		add(tf_article , BorderLayout.NORTH);
+		add(pn_center , BorderLayout.CENTER);
+		
+		pn_center.add(ls_healthles) ; 
+		pn_center.add(ls_damages);
+	}
+	
+	private void setupEvents() {
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//-----------------------------
+		tf_article.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				lm_healthles.addElement(tf_article.getText() );
+				tf_article.setText("");
+			}
+		});
+	}
+	
+	public static void main(String []args) {
+		
+		new StockWindow() ; 
+	}
+}
+

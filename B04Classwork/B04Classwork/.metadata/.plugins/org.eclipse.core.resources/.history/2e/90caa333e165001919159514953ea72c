@@ -1,0 +1,44 @@
+package simulacrum;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Sm01 extends JFrame {
+	//--------------------------
+	private JPanel		pn_center ; 
+	private JComboBox	cb_days ;
+	private JButton		bt_mont ; 
+	//-------------------------
+	
+	public Sm01() {
+		setTitle("Simulacrum");
+		setSize(400 , 400) ; 
+		setupWidgets();
+		setupEvents() ; 
+		setVisible(true);
+	}
+	
+	//---------------------------------------
+	private void setupEvents() {
+		pn_center 	= new JPanel(new GridLayout(4,3));
+		bt_mont		= new JButton(); 
+		cb_days		= new JComboBox(); 
+		
+		add(pn_center , BorderLayout.CENTER);
+		add(cb_days , BorderLayout.SOUTH); 
+	}
+	
+	//----------------------------------------
+	private void setupWidgets() {
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	public static void main (String []args) {
+		new Sm01() ; 
+	}
+}
